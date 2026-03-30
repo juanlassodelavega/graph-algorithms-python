@@ -9,12 +9,19 @@ Este repositorio contiene implementaciones educativas de algoritmos clasicos de 
 
 ## Estructura
 
-- `BFSGrafos.py`: recorrido BFS iterativo con cola.
-- `DFSGrafos.py`: recorrido DFS iterativo con pila.
-- `DijkstraGrafos.py`: grafo con lista de adyacencia y Dijkstra con `heapq`.
-- `PrimGrafos1.py`: Prim usando lista de aristas + monticulo (heap).
-- `PRIMGrafos2.py`: Prim usando matriz de adyacencia.
-- `Grafo.png`: imagen de apoyo del problema/estructura de grafo.
+```
+.
+├── src/
+│   ├── bfs.py          # Recorrido BFS iterativo con cola
+│   ├── dfs.py          # Recorrido DFS iterativo con pila
+│   ├── dijkstra.py     # Grafo con lista de adyacencia y Dijkstra con heapq
+│   ├── prim_heap.py    # Prim usando lista de aristas + monticulo (heap)
+│   └── prim_matrix.py  # Prim usando matriz de adyacencia
+├── tests/              # Tests automaticos (por agregar)
+├── assets/
+│   └── grafo.png       # Imagen de apoyo del problema/estructura de grafo
+└── README.md
+```
 
 ## Requisitos
 
@@ -25,19 +32,19 @@ Este repositorio contiene implementaciones educativas de algoritmos clasicos de 
 Desde la carpeta del proyecto:
 
 ```bash
-python3 BFSGrafos.py
-python3 DFSGrafos.py
-python3 DijkstraGrafos.py
-python3 PrimGrafos1.py
-python3 PRIMGrafos2.py
+python3 src/bfs.py
+python3 src/dfs.py
+python3 src/dijkstra.py
+python3 src/prim_heap.py
+python3 src/prim_matrix.py
 ```
 
 ## Que imprime cada script
 
-- BFS y DFS: nodo de inicio y orden de recorrido.
-- Dijkstra: camino mas corto y longitud total desde `A` a cada nodo.
-- PrimGrafos1: aristas del MST y costo total.
-- PRIMGrafos2: aristas del MST (indices) y peso total.
+- `bfs.py` y `dfs.py`: nodo de inicio y orden de recorrido.
+- `dijkstra.py`: camino mas corto y longitud total desde `A` a cada nodo.
+- `prim_heap.py`: aristas del MST y costo total.
+- `prim_matrix.py`: aristas del MST (indices) y peso total.
 
 ## Mejoras aplicadas
 
@@ -54,10 +61,10 @@ Se realizaron mejoras para hacer el codigo mas reutilizable y robusto:
 Puedes importar funciones/clases sin ejecutar la demo:
 
 ```python
-from BFSGrafos import bfs
-from DFSGrafos import dfs
-from DijkstraGrafos import Graph
-from PrimGrafos1 import prim
+from src.bfs import bfs
+from src.dfs import dfs
+from src.dijkstra import Graph
+from src.prim_heap import prim
 ```
 
 ## Nota

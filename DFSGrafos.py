@@ -1,28 +1,37 @@
-def DFS(G, s):
-    vis, pila = {s}, [s]
-    print(vis)
+def dfs(graph, start):
+    if start not in graph:
+        raise ValueError(f"El nodo inicial '{start}' no existe en el grafo")
 
-    print("\n<< PROFUNDIDAD >> nodo de salida -->", s, end=" ")
-    while pila:
-        flag = 0
-        for i in G[pila[-1]]:
-            if i not in vis:
-                pila.append(i)
-                vis.add(i)
-                flag = 1
-                print(i, end=" ")
-                break
-        if not flag:
-            pila.pop()
+    visited = set()
+    stack = [start]
+    order = []
+
+    while stack:
+        node = stack.pop()
+        if node in visited:
+            continue
+
+        visited.add(node)
+        order.append(node)
+
+        # Se apilan en orden inverso para respetar el orden original al desapilar.
+        for neighbor in reversed(graph.get(node, [])):
+            if neighbor not in visited:
+                stack.append(neighbor)
+
+    return order
 
 
-G = {"0": ["1", "3"],
-     "1": ["0", "2", "4"],
-     "2": ["0", "1", "5"],
-     "3": ["0", "4", "5"],
-     "4": ["1", "3", "5"],
-     "5": ["2", "3"]}
-
-s = "5"
-
-print(DFS(G, s))
+if __name__ == "__main__":
+    graph = {
+        "0": ["1", "3"],
+        "1": ["0", "2", "4"],
+        "2": ["0", "1", "5"],
+        "3": ["0", "4", "5"],
+        "4": ["1", "3", "5"],
+        "5": ["2", "3"],
+    }
+    start_node = "5"
+    traversal = dfs(graph, start_node)
+    print("<< PROFUNDIDAD >> nodo de salida -->", start_node)
+    print("Recorrido:", " ".join(traversal))
